@@ -61,7 +61,7 @@ namespace Intersection_model
             }
             return val;
         }
-        private void StartProgram(string up, string lower, string right, string left, string color , string upperLowerText, string rightLeftText, string Time, string Green, string Red)
+        private void StartProgram(string up, string lower, string right, string left, string color, string upperLowerText, string rightLeftText, string Time, string Green, string Red)
         {
             bibl.Color cColor = ReternColorChoos(color);
             Load upperLoad = ReternLoadChoos(up);
@@ -99,7 +99,7 @@ namespace Intersection_model
             //txtBox.Text = $"{NumberLine}) Количество машин: {result.getNumberOfCars()} Количество машин проехавших через перекресток: {result.getCarsLeftCrossRoad()}{NumberLine}) Количество машин: {result.getNumberOfCars()} Количество машин проехавших через перекресток: {result.getCarsLeftCrossRoad()}";
             //MainScrollViewer.Children.Add(txtBox);//все остальные элементы добавляются по аналогии.Cheldren.Add(txtBox);//все остальные элементы добавляются по аналогии
             //NumberLine++;
-            ResultList.Add(new PrintResult() { PrintNumberColom = NumberLine , PrintNumberOfCars = result.getNumberOfCars(), PrintCarsLeftCrossRoad = result.getCarsLeftCrossRoad(), PrintGreenPhases = result.getGreenPhases(), PrintRedPhases = result.getRedPhases(), PrintYellowPhases = result.getYellowPhases(), PrintACar = result.getACar(), PrintTruck = result.getTruck()});
+            ResultList.Add(new PrintResult() { PrintNumberColom = NumberLine, PrintNumberOfCars = result.getNumberOfCars(), PrintCarsLeftCrossRoad = result.getCarsLeftCrossRoad(), PrintGreenPhases = result.getGreenPhases(), PrintRedPhases = result.getRedPhases(), PrintYellowPhases = result.getYellowPhases(), PrintACar = result.getACar(), PrintTruck = result.getTruck() });
             gridProducts.ItemsSource = null;
             gridProducts.ItemsSource = ResultList;
             NumberLine++;
@@ -116,7 +116,7 @@ namespace Intersection_model
                 return false;
             }
             return true;
-        
+
         }
         private void ErrorCorectFirstLine(string up, string lower, string right, string left, string color)
         {
@@ -136,14 +136,14 @@ namespace Intersection_model
             {
                 MessageBox.Show("Выберите нагрузку на правой дороге");
             }
-            else if(color == "")
+            else if (color == "")
             {
                 MessageBox.Show("Выберите цвет старта для верхней/нижней дороги");
             }
         }
         private void ErrorCorectSecondLine(string upperLowerText, string rightLeftText, string Time, string Green, string Red)
         {
-            if (!ChecCorect(upperLowerText) )
+            if (!ChecCorect(upperLowerText))
             {
                 MessageBox.Show("Пропускная способность врхней/нижней дороги должна быть заполнена целым числом больше нуля");
             }
@@ -187,7 +187,7 @@ namespace Intersection_model
             {
                 MessageBox.Show("Длина красной фазы должно быть заполнена целым числом больше нуля");
             }
-            else if(Convert.ToInt32(Time) < Convert.ToInt32(Red))
+            else if (Convert.ToInt32(Time) < Convert.ToInt32(Red))
             {
                 MessageBox.Show("Длина красной фазы должно быть меньше времени моделирования");
             }
@@ -209,11 +209,12 @@ namespace Intersection_model
             {
                 ErrorCorectFirstLine(up, lower, right, left, color);
             }
-            else if (!ChecCorect(upperLowerText) | !ChecCorect(rightLeftText) | !ChecCorect(Time) | !ChecCorect(Green) | !ChecCorect(Red) )
+            else if (!ChecCorect(upperLowerText) | !ChecCorect(rightLeftText) | !ChecCorect(Time) | !ChecCorect(Green) | !ChecCorect(Red))
             {
 
                 ErrorCorectSecondLine(upperLowerText, rightLeftText, Time, Green, Red);
-            }else if ((Convert.ToInt32(upperLowerText) <= 0) | (Convert.ToInt32(rightLeftText) <= 0) | (Convert.ToInt32(Time) <= 0) | (Convert.ToInt32(Green) <= 0) | (Convert.ToInt32(Red) <= 0))
+            }
+            else if ((Convert.ToInt32(upperLowerText) <= 0) | (Convert.ToInt32(rightLeftText) <= 0) | (Convert.ToInt32(Time) <= 0) | (Convert.ToInt32(Green) <= 0) | (Convert.ToInt32(Red) <= 0))
             {
                 ErrorCorectSecondLine(upperLowerText, rightLeftText, Time, Green, Red);
             }
@@ -221,14 +222,14 @@ namespace Intersection_model
             {
                 StartProgram(up, lower, right, left, color, upperLowerText, rightLeftText, Time, Green, Red);
             }
-            
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Обозначения в таблице:\nКол.М - Общее количество машин, которые были на перекрестке\n"+
-                            "Кол.М.П - Количество машин, которые проехали перекресток\nКол.З.Ф - Количество зеленых фаз\nКол.К.Ф - Количество красных фаз\n"+
-                            "Кол.Ж.Ф. - Количество желтых фаз\nКол.Л - Количество легковых автомобилей\nКол.Г - Количество грузовых автомобилей","Помощь");
+            MessageBox.Show("Обозначения в таблице:\nКол.М - Общее количество машин, которые были на перекрестке\n" +
+                            "Кол.М.П - Количество машин, которые проехали перекресток\nКол.З.Ф - Количество зеленых фаз\nКол.К.Ф - Количество красных фаз\n" +
+                            "Кол.Ж.Ф. - Количество желтых фаз\nКол.Л - Количество легковых автомобилей\nКол.Г - Количество грузовых автомобилей", "Помощь");
         }
     }
 }
