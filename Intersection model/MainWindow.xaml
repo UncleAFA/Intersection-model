@@ -1,0 +1,82 @@
+﻿<Window x:Class="Intersection_model.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Intersection_model"
+        mc:Ignorable="d"
+        Title="MainMenu" Height="800" Width="800" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Name="MainRoot" Background="#99e6ff" >
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <!--<TextBlock Grid.Column="0" Grid.Row="0"  Text="TextBlock" Grid.ColumnSpan="5" Grid.RowSpan="2" Background="Wheat"/>-->
+        <Button Background="#80ff80" Content="Старт Моделирования" Grid.Row="4" VerticalAlignment="Center" Width="150" Grid.Column="2" Cursor="Hand" Click="Button_Click" ToolTip="Нажмите для начала моделирования"/>
+        <Button Background="#ffff80" Content="Помощь" Grid.Column="2"  Grid.Row="4" VerticalAlignment="Top" Width="150" Cursor="Help" ToolTip="Нажмите для получения подробной информации о программе" Click="Button_Click_1"/>
+        <!--<ScrollViewer  Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Background="White" Grid.ColumnSpan="5">-->
+        <DataGrid Name="gridProducts" HorizontalGridLinesBrush="DarkGray" RowBackground="LightGray" AlternatingRowBackground="White" AutoGenerateColumns="False" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Background="White" Grid.ColumnSpan="5">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding Path=PrintNumberColom}" Width="90"/>
+                <DataGridTextColumn Header="Кол.М" Binding="{Binding Path=PrintNumberOfCars}" Width="100"/>
+                <DataGridTextColumn Header="Кол.М.П." Binding="{Binding Path=PrintCarsLeftCrossRoad}" Width="100"/>
+                <DataGridTextColumn Header="Кол.З.Ф." Binding="{Binding Path=PrintGreenPhases}" Width="100"/>
+                <DataGridTextColumn Header="Кол.К.Ф." Binding="{Binding Path=PrintRedPhases}" Width="100"/>
+                <DataGridTextColumn Header="Кол.Ж.Ф." Binding="{Binding Path=PrintYellowPhases}" Width="100"/>
+                <DataGridTextColumn Header="Кол.Л." Binding="{Binding Path=PrintACar}" Width="100"/>
+                <DataGridTextColumn Header="Кол.Г." Binding="{Binding Path=PrintTruck}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <!--</ScrollViewer>-->
+        <ComboBox HorizontalAlignment="Left" Margin="10,39,0,0" Grid.Row="2" Grid.Column="0" Width="138" Height="20" Cursor="Hand" Name="upperLoadChoos">
+            <TextBlock Background="#33cc33" FontFamily="Times New Roman"  Width="134" Height="20" Cursor="Hand" FontWeight="Bold">Низкая</TextBlock>
+            <TextBlock Background="#ffff66" FontFamily="Times New Roman" Width="134" Height="20" Cursor="Hand" FontWeight="Bold">Средняя</TextBlock>
+            <TextBlock Background="#ff6666" FontFamily="Times New Roman" Width="134" Height="20" Cursor="Hand" FontWeight="Bold">Высокая</TextBlock>
+        </ComboBox>
+        <ComboBox HorizontalAlignment="Left" Margin="10,39,0,0" Grid.Row="2"  Grid.Column="1" Width="139" Height="20" Cursor="Hand" Name="lowerLoadChoos">
+            <TextBlock Background="#33cc33" FontFamily="Times New Roman"  Width="134" Height="20" Cursor="Hand" FontWeight="Bold">Низкая</TextBlock>
+            <TextBlock Background="#ffff66" FontFamily="Times New Roman" Width="134" Height="20" Cursor="Hand" FontWeight="Bold">Средняя</TextBlock>
+            <TextBlock Background="#ff6666" FontFamily="Times New Roman" Width="134" Height="20" Cursor="Hand" FontWeight="Bold">Высокая</TextBlock>
+        </ComboBox>
+        <ComboBox HorizontalAlignment="Left" Margin="10,39,0,0" Grid.Row="2"  Grid.Column="2" Width="139" Height="20" Cursor="Hand" Name="rightLoadChoos">
+            <TextBlock Background="#33cc33" FontFamily="Times New Roman"  Width="134" Height="20" Cursor="Hand" FontWeight="Bold">Низкая</TextBlock>
+            <TextBlock Background="#ffff66" FontFamily="Times New Roman" Width="134" Height="20" Cursor="Hand" FontWeight="Bold">Средняя</TextBlock>
+            <TextBlock Background="#ff6666" FontFamily="Times New Roman" Width="134" Height="20" Cursor="Hand" FontWeight="Bold">Высокая</TextBlock>
+        </ComboBox>
+        <ComboBox HorizontalAlignment="Left" Margin="10,39,0,0" Grid.Row="2"  Grid.Column="3" Width="139" Height="20" Cursor="Hand" Name="leftLoadChoos">
+            <TextBlock Background="#33cc33" FontFamily="Times New Roman"  Width="134" Height="20" Cursor="Hand" FontWeight="Bold">Низкая</TextBlock>
+            <TextBlock Background="#ffff66" FontFamily="Times New Roman" Width="134" Height="20" Cursor="Hand" FontWeight="Bold">Средняя</TextBlock>
+            <TextBlock Background="#ff6666" FontFamily="Times New Roman" Width="134" Height="20" Cursor="Hand" FontWeight="Bold">Высокая</TextBlock>
+        </ComboBox>
+        <ComboBox HorizontalAlignment="Left" Margin="10,39,0,0" Grid.Row="2"  Grid.Column="4" Width="139" Height="20" Cursor="Hand" Name="cColorChoos">
+            <TextBlock Background="#33cc33" FontFamily="Times New Roman"  Width="134" Height="20" Cursor="Hand" FontWeight="Bold">Зеленый</TextBlock>
+            <TextBlock Background="#ffff66" FontFamily="Times New Roman" Width="134" Height="20" Cursor="Hand" FontWeight="Bold">Желтый</TextBlock>
+            <TextBlock Background="#ff6666" FontFamily="Times New Roman" Width="134" Height="20" Cursor="Hand" FontWeight="Bold">Красный</TextBlock>
+        </ComboBox>
+        <Label Content="Нагрузка на верхнюю &#xD;&#xA;дорогу"  Margin="10,39,10,0" Grid.Row="2" VerticalAlignment="Top" Height="47"/>
+        <Label Content="Нагрузка на нижнюю&#xA;дорогу" Margin="10,39,10,0" Grid.Row="2" VerticalAlignment="Top" Height="47" Grid.Column="1"/>
+        <Label Content="Нагрузка на правую&#xA;дорогу" Margin="10,39,10,0" Grid.Row="2" VerticalAlignment="Top" Height="47" Grid.Column="2"/>
+        <Label Content="Нагрузка на левую&#xA;дорогу"  Margin="10,39,10,0" Grid.Row="2" VerticalAlignment="Top" Height="47" Grid.Column="3"/>
+        <Label Content="Старт для &#xD;&#xA;верхней/нижней &#xD;&#xA;дороги" Margin="10,24,10,0" Grid.Row="2" VerticalAlignment="Top" Height="62" Grid.Column="4"/>
+        <TextBox ToolTip="Введите количество полос" Height="22" Margin="10,91,10,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Text="2" Name="upperLowerBandwidthChoos"/>
+        <Label Content="Пропускная способность&#xD;&#xA;врхней/нижней &#xD;&#xA;дороги"  Margin="10,29,10,0" Grid.Row="3" VerticalAlignment="Top" Height="62" FontSize="11"/>
+        <TextBox ToolTip="Введите количество полос" Height="22" Margin="10,91,10,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Text="1" Grid.Column="1" Name="rightLeftBandwidthChoos"/>
+        <Label Content="Пропускная способность&#xA;правой/левой&#xA;дороги"  Margin="10,29,10,0" Grid.Row="3" VerticalAlignment="Top" Height="62" FontSize="11" Grid.Column="1"/>
+        <TextBox ToolTip="Введите значение в секундах" Height="22" Margin="10,91,10,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="2" Text="13" Name="cGreenChoos"/>
+        <Label Content="Длина зеленой фазы"  Margin="10,59,10,0" Grid.Row="3" VerticalAlignment="Top" Height="32" FontSize="11" Grid.Column="2"/>
+        <TextBox  ToolTip="Введите значение в секундах" Height="22" Margin="10,91,10,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Text="10" Grid.Column="3" Name="cRedChoos"/>
+        <Label Content="Длина красной фазы"  Margin="10,59,10,0" Grid.Row="3" VerticalAlignment="Top" Height="32" FontSize="11" Grid.Column="3"/>
+        <TextBox ToolTip="Введите значение в секундах" Height="22" Margin="10,91,10,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Text="100" Grid.Column="4" Name="cTimeChoos"/>
+        <Label Content="Время моделирования"  Margin="10,59,10,0" Grid.Row="3" VerticalAlignment="Top" Height="32" FontSize="11" Grid.Column="4"/>
+    </Grid>
+</Window>
